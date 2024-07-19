@@ -16,7 +16,8 @@
         "illuminate/contracts": "^10.0|^11.0",
         "illuminate/support": "^10.0|^11.0",
         "illuminate/console": "^10.0|^11.0",
-        "illuminate/validation": "^10.0|^11.0"
+        "illuminate/validation": "^10.0|^11.0",
+        "guzzlehttp/guzzle": "^7.9"
     },
     "require-dev": {
         "mockery/mockery": "1.7.x-dev",
@@ -25,17 +26,14 @@
         "larastan/larastan": "^2.9",
         "laravel/pint": "^1.16"
     },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "rahulalam31\\AbuseIp\\AbuseIpServiceProvider.php"
-            ]
-        }
-    },
     "autoload": {
         "psr-4": {
-            "rahulalam31\\LaravelAbuseIp\\": "src/",
-            "rahulalam31\\LaravelAbuseIp\\Tests\\": "tests/"
+            "RahulAlam31\\LaravelAbuseIp\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
     },
     "minimum-stability": "dev",

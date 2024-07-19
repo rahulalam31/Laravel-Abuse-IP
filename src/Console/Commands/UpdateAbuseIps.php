@@ -1,6 +1,6 @@
 <?php
 
-namespace rahulalam31\AbuseIp\Console\Commands;
+namespace RahulAlam31\LaravelAbuseIp\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
@@ -16,7 +16,7 @@ class UpdateAbuseIps extends Command
         $this->info('Fetching IP blockList...');
 
         //fetch the IP blocklist
-        $ips = $this->fetchIpsFromSources(config('spamipblocker.source'));
+        $ips = $this->fetchIpsFromSources(config('abuse-ip.source'));
 
         if(!empty($ips)){
 

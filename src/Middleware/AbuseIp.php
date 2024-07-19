@@ -1,6 +1,6 @@
 <?php
 
-namespace rahulalam31\AbuseIp\Middleware;
+namespace RahulAlam31\LaravelAbuseIp\Middleware;
 
 
 use Closure;
@@ -10,10 +10,14 @@ class AbuseIp
 {
     public function handle(Request $request, Closure $next)
     {
-        $abuseip = config('abuse-ip');
+        $abuseip = config('abuse-ip.spam_ips');
 
-        if(in_array($request->ip(), $abuseip)) {
-            abort(403, 'Your IP address has been blocked');
+        Log::info('Request IP: ' . $request->ip());
+        Log::info('Spam IPs: ', $abuseip);
+        if (in_array($request->ip(), $abuseip)) {
+
+            Log::info('Blocking IP: ' . $request->ip());
+            return response('Your IP address has been blocked', 403);
         }
 
         return $next($request);

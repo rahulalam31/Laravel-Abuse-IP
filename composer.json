@@ -1,9 +1,20 @@
 {
-    "name": "rahul/laravel-abuse-ip",
+    "name": "rahulalam31/laravel-abuse-ip",
     "description": "Block ip address of all spammer's around the world.",
+    "keywords": ["framework", "laravel", "AbuseIpDB", "Spam protection", "laravel security"],
+    "authors": [
+        {
+            "name": "rahulalam31",
+            "email": "gaberialcramern31@outlook.com"
+        }
+    ],
     "require": {
         "php": "^8.1",
-        "illuminate/support": "^8.0|^9.0|^10.0"
+        "illuminate/support": "^8.0|^9.0|^10.0|^11.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "1.7.x-dev",
+        "orchestra/testbench": "^8.18"
     },
     "extra": {
         "laravel": {
@@ -14,14 +25,9 @@
     },
     "autoload": {
         "psr-4": {
-            "Rahul\\LaravelAbuseIp\\": "src/"
+            "rahulalam31\\LaravelAbuseIp\\": "src/"
         }
     },
-    "authors": [
-        {
-            "name": "rahulalam31",
-            "email": "gaberialcramern31@outlook.com"
-        }
-    ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

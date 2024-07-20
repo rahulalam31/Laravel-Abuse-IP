@@ -16,7 +16,7 @@ class AbuseIPServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/middleware/AbuseIp.php' => app_path('Http/Middleware/AbuseIp.php'),
-        ]);
+        ], 'middleware');
 
         $this->mergeConfigFrom(
             __DIR__.'/../config/abuse-ip.php', 'abuse-ip'

@@ -11,16 +11,12 @@ class AbuseIPServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/abuse-ip.php' => config_path('abuse-ip.php'),
+            __DIR__.'/../config/abuseip.php' => config_path('abuseip.php'),
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/middleware/AbuseIp.php' => app_path('Http/Middleware/AbuseIp.php'),
+            __DIR__.'/Middleware/AbuseIp.php' => app_path('Http/Middleware/AbuseIp.php'),
         ], 'middleware');
-
-        $this->mergeConfigFrom(
-            __DIR__.'/../config/abuse-ip.php', 'abuse-ip'
-        );
 
         if($this->app->runningInConsole()){
             $this->commands([
@@ -41,6 +37,10 @@ class AbuseIPServiceProvider extends ServiceProvider
 
     public function register()
     {
+
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/abuseip.php', 'abuseip'
+        );
         // $this->app['router']->aliasMiddleware('block.abuse_ip', \RahulAlam31\LaravelAbuseIp\Middleware\AbuseIp::class);
     }
 

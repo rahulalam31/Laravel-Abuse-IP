@@ -37,7 +37,7 @@ class UpdateAbuseIpTest extends TestCase
         $this->assertContains('1.1.109.151', $cachedIps);
 
         // Check that ip.json file is updated
-        $ipjsonPath = config('abuse-ip.storage') ;
+        $ipjsonPath = config('abuseip.storage') ;
         $this->assertFileExists($ipjsonPath);
         $ipsfromFile = json_decode(file_get_contents($ipjsonPath), true);
         $this->assertNotEmpty($ipsfromFile);

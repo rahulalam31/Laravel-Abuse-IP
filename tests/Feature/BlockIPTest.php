@@ -28,7 +28,7 @@ class BlockIPTest extends TestCase
         });
 
         // Ensure the configuration is loaded
-        $this->app['config']->set('abuse-ip', include __DIR__ . '/../../config/abuse-ip.php');
+        $this->app['config']->set('abuse-ip', include __DIR__ . '/../../config/abuseip.php');
     }
 
 

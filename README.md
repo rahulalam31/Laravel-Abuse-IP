@@ -86,4 +86,4 @@ Route::middleware(AbuseIp::class)->get('/', function () {
 ### Custom fetches
 
 By default the package retrieves a new list by using `file_get_contents()`.
-If you have your own blacklisted Ip List add it to the `source` in `config/abuse-ip.php`
+If you have your own blacklisted Ip List add it to the `source` in `config/abuseip.php`

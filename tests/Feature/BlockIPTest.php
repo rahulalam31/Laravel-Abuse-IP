@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Cache;
 use Orchestra\Testbench\TestCase;
 use RahulAlam31\LaravelAbuseIp\AbuseIPServiceProvider;
 use Illuminate\Support\Facades\Route;
-use RahulAlam31\LaravelAbuseIp\Middleware\AbuseIp;
+use App\Http\Middleware\AbuseIp;
 
 class BlockIPTest extends TestCase
 {

@@ -4,7 +4,7 @@ namespace RahulAlam31\LaravelAbuseIp;
 
 use Illuminate\Support\ServiceProvider;
 use RahulAlam31\LaravelAbuseIp\Console\Commands\UpdateAbuseIps;
-use RahulAlam31\LaravelAbuseIp\Middleware\AbuseIp;
+use App\Http\Middleware\AbuseIp;
 
 class AbuseIPServiceProvider extends ServiceProvider
 {
@@ -45,7 +45,7 @@ class AbuseIPServiceProvider extends ServiceProvider
         // $this->mergeConfigFrom(
         //     __DIR__.'/../config/abuseip.php', 'abuseip'
         // );
-        // $this->app['router']->aliasMiddleware('block.abuse_ip', \RahulAlam31\LaravelAbuseIp\Middleware\AbuseIp::class);
+        // $this->app['router']->aliasMiddleware('block.abuse_ip', \RApp\Http\Middleware\AbuseIp::class);
     }
 
 }

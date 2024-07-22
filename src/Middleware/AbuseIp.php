@@ -10,7 +10,7 @@ class AbuseIp
 {
     public function handle(Request $request, Closure $next)
     {
-        $abuseip = config('abuse-ip.spam_ips');
+        $abuseip = config('abuseip.spam_ips');
 
         Log::info('Request IP: ' . $request->ip());
         Log::info('Spam IPs: ', $abuseip);

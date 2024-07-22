@@ -12,11 +12,11 @@ class AbuseIPServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../config/abuseip.php' => config_path('abuseip.php'),
-        ], 'config');
+        ], 'laravel-abuse-ip');
 
         $this->publishes([
             __DIR__.'/Middleware/AbuseIp.php' => app_path('Http/Middleware/AbuseIp.php'),
-        ], 'middleware');
+        ], 'laravel-abuse-ip');
 
         $this->mergeConfigFrom(
             __DIR__.'/../config/abuseip.php', 'abuseip'

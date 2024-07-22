@@ -35,13 +35,13 @@
   },
   "autoload": {
     "psr-4": {
-      "RahulAlam31\\LaravelAbuseIp\\": "src/"
+      "rahulalam31\\laravel-abuse-ip\\": "src/"
     }
   },
   "extra": {
       "laravel": {
           "providers": [
-              "RahulAlam31\\LaravelAbuseIp\\AbuseIPServiceProvider"
+              "rahulalam31\\laravel-abuse-ip\\AbuseIPServiceProvider"
           ]
       }
   },

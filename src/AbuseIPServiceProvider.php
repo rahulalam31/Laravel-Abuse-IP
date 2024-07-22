@@ -18,13 +18,17 @@ class AbuseIPServiceProvider extends ServiceProvider
             __DIR__.'/Middleware/AbuseIp.php' => app_path('Http/Middleware/AbuseIp.php'),
         ], 'middleware');
 
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/abuseip.php', 'abuseip'
+        );
+        
         if($this->app->runningInConsole()){
             $this->commands([
                 UpdateAbuseIps::class,
             ]);
         }
 
-        // $this->app['router']->middleware('block.abuse_ip', AbuseIp::class);
+        $this->app['router']->middleware('abuse_ip', AbuseIp::class);
 
 
         // Register middleware
@@ -38,9 +42,9 @@ class AbuseIPServiceProvider extends ServiceProvider
     public function register()
     {
 
-        $this->mergeConfigFrom(
-            __DIR__.'/../config/abuseip.php', 'abuseip'
-        );
+        // $this->mergeConfigFrom(
+        //     __DIR__.'/../config/abuseip.php', 'abuseip'
+        // );
         // $this->app['router']->aliasMiddleware('block.abuse_ip', \RahulAlam31\LaravelAbuseIp\Middleware\AbuseIp::class);
     }
 

@@ -17,7 +17,7 @@ Uses the AbuseIPDB blocklist from [borestad/blocklist-abuseipdb](https://github.
 2. Publish the configuration file and adapt the configuration as desired:
 
     ```bash
-    php artisan vendor:publish --provider="RahulAlam31\LaravelAbuseIp\AbuseIpServiceProvider" --tag=config
+    php artisan vendor:publish --tag=laravel-abuse-ip
     ```
 
 3. Run the following artisan command to fetch an up-to-date list of disposable domains:

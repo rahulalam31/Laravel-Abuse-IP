@@ -16,7 +16,7 @@ class UpdateAbuseIps extends Command
         $this->info('Fetching IP blockList...');
 
         //fetch the IP blocklist
-        $ips = $this->fetchIpsFromSources(config('abuse-ip.source'));
+        $ips = $this->fetchIpsFromSources(config('abuseip.source'));
 
         if(!empty($ips)){
 

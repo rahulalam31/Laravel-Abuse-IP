@@ -21,7 +21,7 @@ class UpdateAbuseIps extends Command
         if(!empty($ips)){
 
             //save to ip.json
-            file_put_contents(config('abuse-ip.storage'), json_encode($ips, JSON_PRETTY_PRINT));
+            file_put_contents(config('abuseip.storage'), json_encode($ips, JSON_PRETTY_PRINT));
 
             Cache::forever('abuse_ips', $ips);
 

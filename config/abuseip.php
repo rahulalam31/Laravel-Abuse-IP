@@ -21,7 +21,7 @@ return [
 
     'abuse_ips' => function () {
         return Cache::get('abuse_ips', function () {
-            $path = config('abuse-ip.storage');
+            $path = config('abuseip.storage');
             return file_exists($path) ? json_decode(file_get_contents($path), true) : [];
         });
     },

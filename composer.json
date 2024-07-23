@@ -8,6 +8,7 @@
     "Spam protection",
     "laravel security"
   ],
+  "license": "MIT",
   "type": "library",
   "authors": [
     {

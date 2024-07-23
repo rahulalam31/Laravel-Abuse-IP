@@ -10,13 +10,11 @@ class AbuseIp
 {
     public function handle(Request $request, Closure $next)
     {
-        $abuseip = config('abuseip.spam_ips');
+        $abuseip = config('abuseip.abuse_ips');
 
-        Log::info('Request IP: ' . $request->ip());
-        Log::info('Spam IPs: ', $abuseip);
         if (in_array($request->ip(), $abuseip)) {
 
-            Log::info('Blocking IP: ' . $request->ip());
+            // Log::info('Blocking IP: ' . $request->ip());
             return response('Your IP address has been blocked', 403);
         }
 

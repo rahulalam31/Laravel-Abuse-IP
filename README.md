@@ -1,7 +1,6 @@
 
-![Untitled design](https://github.com/user-attachments/assets/913554dc-6e0b-4505-88b7-8d9860bd2dde)
+# Laravel Abuse-IP![Untitled design(1)(1)](https://github.com/user-attachments/assets/a776c6b6-e08c-4e80-ab80-78e6142a12f0)
 
-# Laravel Abuse-IP
 ##Keep you webiste safe from spammer.
 
 ![Packagist Downloads](https://img.shields.io/packagist/dt/rahulalam31/Laravel-Abuse-IP) ![Packagist Version](https://img.shields.io/packagist/v/rahulalam31/Laravel-Abuse-IP) [![License: MIT](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/license/mit) ![PHP](https://img.shields.io/badge/python-3.6-blue.svg)

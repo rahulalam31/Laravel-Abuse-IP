@@ -10,7 +10,7 @@ class AbuseIp
 {
     public function handle(Request $request, Closure $next)
     {
-        $abuseip = config('abuseip.abuse_ips');
+        $abuseip = config('abuseip.abuse_ips')();
 
         if (in_array($request->ip(), $abuseip)) {
 

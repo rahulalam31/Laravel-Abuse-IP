@@ -27,7 +27,6 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add abuseip.json
           git commit -m '[AUTO] Update spam IP list'
-          git pull
-          git push
+          git push origin HEAD:${{ github.ref }}
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

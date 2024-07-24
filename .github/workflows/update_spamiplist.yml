@@ -1,0 +1,32 @@
+name: Update SPAM IP List
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at midnight
+  workflow_dispatch:
+
+jobs:
+  update-iplist:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+  
+      - name: Fetch IP List
+        run: |
+          curl -o abuseip.json https://raw.githubusercontent.com/borestad/blocklist-abuseipdb/main/abuseipdb-s100-30d.ipv4
+  
+      - name: Format IP List
+        run: |
+          jq -R -s -c 'split("\n") | map(select(length > 0))' abuseip.json > tmp.json && mv tmp.json abuseip.json
+  
+      - name: Commit changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add abuseip.json
+          git commit -m 'Update spam IP list'
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

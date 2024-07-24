@@ -1,16 +1,8 @@
 # Laravel Abuse-IP
 ##Keep you webiste safe from spammer.
 
-![Packagist Downloads](https://img.shields.io/packagist/dt/rahulalam31/Laravel-Abuse-IP)![Packagist Version](https://img.shields.io/packagist/v/rahulalam31/Laravel-Abuse-IP)
+![Packagist Downloads](https://img.shields.io/packagist/dt/rahulalam31/Laravel-Abuse-IP) ![Packagist Version](https://img.shields.io/packagist/v/rahulalam31/Laravel-Abuse-IP) [![License: MIT](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/license/mit) ![PHP](https://img.shields.io/badge/python-3.6-blue.svg)
 
-
-[![Latest Stable Version](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/v)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip)
-
-[![Total Downloads](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/downloads)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip)
-
-[![License](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/license)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip)
-
-[![PHP Version Require](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/require/php)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip)
 
 Adds a Security to Laravel for checking whether the IP address is safe or marked as spam to keep you out of worry from spammers and fake data to your website. 
 Uses the AbuseIPDB blocklist from [borestad/blocklist-abuseipdb](https://github.com/borestad/blocklist-abuseipdb) by default.

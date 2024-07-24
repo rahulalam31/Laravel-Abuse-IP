@@ -3,6 +3,8 @@
 
 [![Latest Stable Version](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/v)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip) [![Total Downloads](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/downloads)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip) [![Latest Unstable Version](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/v/unstable)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip) [![License](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/license)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip) [![PHP Version Require](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/require/php)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip)
 
+[![Latest Stable Version](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/v)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip) [![Total Downloads](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/downloads)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip) [![Latest Unstable Version](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/v/unstable)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip) [![License](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/license)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip) [![PHP Version Require](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/require/php)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip)
+
 Adds a Security to Laravel for checking whether the IP address is safe or marked as spam to keep you out of worry from spammers and fake data to your website. 
 Uses the AbuseIPDB blocklist from [borestad/blocklist-abuseipdb](https://github.com/borestad/blocklist-abuseipdb) by default.
 

@@ -26,5 +26,5 @@ return [
         });
     },
 
-    'storage' => storage_path('framework/abuse_ip.json'),
+    'storage' => storage_path('framework/abuseip.json'),
 ];

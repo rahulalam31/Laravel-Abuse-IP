@@ -1,7 +1,8 @@
 # Laravel Abuse-IP
 ##Keep you webiste safe from spammer.
 
-[![Latest Stable Version](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/v)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip) [![Total Downloads](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/downloads)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip) [![Latest Unstable Version](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/v/unstable)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip) [![License](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/license)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip) [![PHP Version Require](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/require/php)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip)
+![Packagist Downloads](https://img.shields.io/packagist/dt/rahulalam31/Laravel-Abuse-IP)![Packagist Version](https://img.shields.io/packagist/v/rahulalam31/Laravel-Abuse-IP)
+
 
 [![Latest Stable Version](http://poser.pugx.org/rahulalam31/laravel-abuse-ip/v)](https://packagist.org/packages/rahulalam31/laravel-abuse-ip)
 

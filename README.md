@@ -5,7 +5,7 @@
 
 ##Keep you webiste safe from spammer.
 
-![Packagist Downloads](https://img.shields.io/packagist/dt/rahulalam31/Laravel-Abuse-IP) ![Packagist Version](https://img.shields.io/packagist/v/rahulalam31/Laravel-Abuse-IP) [![License: MIT](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/license/mit) [![Update SPAM IP List](https://github.com/rahulalam31/Laravel-Abuse-IP/actions/workflows/update_spamiplist.yml/badge.svg)](https://github.com/rahulalam31/Laravel-Abuse-IP/actions/workflows/update_spamiplist.yml)
+<iframe src="https://ghbtns.com/github-btn.html?user=rahulalam31&repo=Laravel-Abuse-IP&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe> ![Packagist Downloads](https://img.shields.io/packagist/dt/rahulalam31/Laravel-Abuse-IP) ![Packagist Version](https://img.shields.io/packagist/v/rahulalam31/Laravel-Abuse-IP) [![License: MIT](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/license/mit) [![Update SPAM IP List](https://github.com/rahulalam31/Laravel-Abuse-IP/actions/workflows/update_spamiplist.yml/badge.svg)](https://github.com/rahulalam31/Laravel-Abuse-IP/actions/workflows/update_spamiplist.yml)
 
 
 Adds a Security to Laravel for checking whether the IP address is safe or marked as spam to keep you out of worry from spammers and fake data to your website. 

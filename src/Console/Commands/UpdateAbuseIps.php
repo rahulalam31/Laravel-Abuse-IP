@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\Http;
 class UpdateAbuseIps extends Command
 {
     protected $signature = 'abuseip:update';
+
     protected $description = 'update the abuse ip list.';
 
-    public function handle()
+    public function handle(): void
     {
         $this->info('Fetching IP blockList...');
 
@@ -20,7 +21,7 @@ class UpdateAbuseIps extends Command
 
         if(!empty($ips)){
 
-            //save to ip.json
+            //save to abuseip.json
             file_put_contents(config('abuseip.storage'), json_encode($ips, JSON_PRETTY_PRINT));
 
             Cache::forever('abuse_ips', $ips);
@@ -32,18 +33,29 @@ class UpdateAbuseIps extends Command
 
     }
 
-    private function fetchIpsFromSources(array $sources)
+    private function fetchIpsFromSources(array $sources): array
     {
         $ips = [];
         foreach ($sources as $source) {
             $response = Http::get($source);
             if ($response->successful()) {
-                $sourceIps = array_filter(explode("\n", $response->body()));
+                $sourceIps = $this->parseBlocklist($response->body());
                 $ips = array_merge($ips, $sourceIps);
             } else {
                 $this->error("Failed to fetch from source: $source");
             }
         }
-        return array_unique($ips);
+        return array_values(array_unique($ips));
+    }
+
+    private function parseBlocklist(string $blocklist): array
+    {
+        $lines = explode("\n", $blocklist);
+
+        // Remove inline comments and validate that every line contains a valid IP address
+        return array_filter(
+            array_map(fn ($line) => preg_replace('/\s*#.*$/', '', trim($line)), $lines),
+            fn ($line) => filter_var($line, FILTER_VALIDATE_IP) !== false
+        );
     }
 }

@@ -2,12 +2,11 @@
 
 namespace RahulAlam31\LaravelAbuseIp\tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Route;
 use Orchestra\Testbench\TestCase;
 use RahulAlam31\LaravelAbuseIp\AbuseIPServiceProvider;
-use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\AbuseIp;
+use RahulAlam31\LaravelAbuseIp\Middleware\AbuseIp;
 
 class BlockIPTest extends TestCase
 {
@@ -28,9 +27,8 @@ class BlockIPTest extends TestCase
         });
 
         // Ensure the configuration is loaded
-        $this->app['config']->set('abuse-ip', include __DIR__ . '/../../config/abuseip.php');
+        $this->app['config']->set('abuse-ip', include __DIR__.'/../../config/abuseip.php');
     }
-
 
     public function testRequestFromBlockedIp()
     {
@@ -54,5 +52,4 @@ class BlockIPTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('ok');
     }
-
 }

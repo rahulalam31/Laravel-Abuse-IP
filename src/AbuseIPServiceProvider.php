@@ -18,10 +18,6 @@ class AbuseIPServiceProvider extends ServiceProvider
             __DIR__.'/Middleware/AbuseIp.php' => app_path('Http/Middleware/AbuseIp.php'),
         ], 'laravel-abuse-ip');
 
-        $this->publishes([
-            __DIR__.'/../abuseip.json' => storage_path('framework/abuseip.json'),
-        ], 'laravel-abuse-ip');
-
         $this->mergeConfigFrom(
             __DIR__.'/../config/abuseip.php',
             'abuseip'

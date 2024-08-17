@@ -34,7 +34,7 @@ class BlockIPTest extends TestCase
     {
 
         // Add test IPs to the cache
-        Cache::forever('abuse_ips', ['192.168.0.1', '10.0.0.1', '1.0.136.77']);
+        Cache::forever('abuse_ips', [ip2long('192.168.0.1'), ip2long('10.0.0.1'), ip2long('1.0.136.77')]);
 
         // Simulate request from a blocked IP
         $response = $this->withServerVariables(['REMOTE_ADDR' => '1.0.136.77'])->get('/test-route');
@@ -45,7 +45,7 @@ class BlockIPTest extends TestCase
     public function testRequestFromAllowedIp()
     {
         // Add test IPs to the cache
-        Cache::forever('abuse_ips', ['192.168.0.1', '10.0.0.1']);
+        Cache::forever('abuse_ips', [ip2long('192.168.0.1'), ip2long('10.0.0.1')]);
 
         // Simulate request from a non-blocked IP
         $response = $this->withServerVariables(['REMOTE_ADDR' => '8.8.8.8'])->get('/test-route');

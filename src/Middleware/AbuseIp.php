@@ -9,11 +9,9 @@ class AbuseIp
 {
     public function handle(Request $request, Closure $next)
     {
-        $abuseip = config('abuseip.abuse_ips')();
-
-        if (in_array($request->ip(), $abuseip)) {
-
+        if (is_abused_ip($request->ip())) {
             // Log::info('Blocking IP: ' . $request->ip());
+
             return response('Your IP address has been blocked', 403);
         }
 

@@ -40,13 +40,13 @@ class UpdateAbuseIpTest extends TestCase
         // Assert the cache contains the correct IPS
         $cachedIps = Cache::get('abuse_ips');
         $this->assertNotEmpty($cachedIps);
-        $this->assertContains('192.168.0.1', $cachedIps);
-        $this->assertContains('10.0.0.1', $cachedIps);
-        $this->assertContains('172.16.0.1', $cachedIps);
-        $this->assertContains('127.0.0.1', $cachedIps);
-        $this->assertContains('1.2.3.4', $cachedIps);
-        $this->assertContains('5.6.7.8', $cachedIps);
-        $this->assertContains('127.0.0.9', $cachedIps);
+        $this->assertContains(ip2long('192.168.0.1'), $cachedIps);
+        $this->assertContains(ip2long('10.0.0.1'), $cachedIps);
+        $this->assertContains(ip2long('172.16.0.1'), $cachedIps);
+        $this->assertContains(ip2long('127.0.0.1'), $cachedIps);
+        $this->assertContains(ip2long('1.2.3.4'), $cachedIps);
+        $this->assertContains(ip2long('5.6.7.8'), $cachedIps);
+        $this->assertContains(ip2long('127.0.0.9'), $cachedIps);
         $this->assertNotContains('# Some Blocklist', $cachedIps);
 
         // Check that ip.json file is updated
@@ -54,13 +54,13 @@ class UpdateAbuseIpTest extends TestCase
         $this->assertFileExists($ipjsonPath);
         $ipsfromFile = json_decode(file_get_contents($ipjsonPath), true);
         $this->assertNotEmpty($ipsfromFile);
-        $this->assertContains('192.168.0.1', $ipsfromFile);
-        $this->assertContains('10.0.0.1', $ipsfromFile);
-        $this->assertContains('172.16.0.1', $ipsfromFile);
-        $this->assertContains('127.0.0.1', $ipsfromFile);
-        $this->assertContains('1.2.3.4', $ipsfromFile);
-        $this->assertContains('5.6.7.8', $ipsfromFile);
-        $this->assertContains('127.0.0.9', $ipsfromFile);
+        $this->assertContains(ip2long('192.168.0.1'), $ipsfromFile);
+        $this->assertContains(ip2long('10.0.0.1'), $ipsfromFile);
+        $this->assertContains(ip2long('172.16.0.1'), $ipsfromFile);
+        $this->assertContains(ip2long('127.0.0.1'), $ipsfromFile);
+        $this->assertContains(ip2long('1.2.3.4'), $ipsfromFile);
+        $this->assertContains(ip2long('5.6.7.8'), $ipsfromFile);
+        $this->assertContains(ip2long('127.0.0.9'), $ipsfromFile);
         $this->assertNotContains('# Some Blocklist', $ipsfromFile);
     }
 }

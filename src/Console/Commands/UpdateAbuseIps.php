@@ -3,6 +3,7 @@
 namespace RahulAlam31\LaravelAbuseIp\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
@@ -16,21 +17,30 @@ class UpdateAbuseIps extends Command
     {
         $this->info('Fetching IP blockList...');
 
-        //fetch the IP blocklist
+        // fetch the IP blocklist
         $ips = $this->fetchIpsFromSources(config('abuseip.source'));
 
-        if(!empty($ips)){
+        if (empty($ips)) {
+            $this->error('Failed to fetch IP blocklist');
 
-            //save to abuseip.json
-            file_put_contents(config('abuseip.storage'), json_encode($ips, JSON_PRETTY_PRINT));
+            return;
+        }
 
+        // convert ips to integers
+        $ips = array_map(fn (string $ip) => ip2long($ip), $ips);
+
+        // save to abuseip.json
+        file_put_contents(config('abuseip.storage'), json_encode($ips));
+
+        try {
             Cache::forever('abuse_ips', $ips);
 
             $this->info('IP blocklist updated successfully');
-        } else {
-            $this->error('Failed to fetch IP blocklist');
-        }
+        } catch (QueryException) {
+            Cache::forget('abuse_ips');
 
+            $this->warn('IP blocklist saved to file, but is too long to cache in database');
+        }
     }
 
     private function fetchIpsFromSources(array $sources): array
@@ -45,6 +55,7 @@ class UpdateAbuseIps extends Command
                 $this->error("Failed to fetch from source: $source");
             }
         }
+
         return array_values(array_unique($ips));
     }
 

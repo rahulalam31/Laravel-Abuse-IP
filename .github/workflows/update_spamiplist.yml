@@ -12,15 +12,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-  
+
       - name: Fetch IP List
         run: |
-          curl -o abuseip.json https://raw.githubusercontent.com/borestad/blocklist-abuseipdb/main/abuseipdb-s100-all.ipv4
-  
+          curl -o abuseip.json https://raw.githubusercontent.com/borestad/blocklist-abuseipdb/main/abuseipdb-s100-14d.ipv4
+
       - name: Format IP List
         run: |
           jq -R -s -c 'split("\n") | map(select(length > 0))' abuseip.json > tmp.json && mv tmp.json abuseip.json
-  
+
       - name: Commit changes
         run: |
           git config --global user.name 'github-actions[bot]'

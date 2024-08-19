@@ -37,7 +37,10 @@
   "autoload": {
     "psr-4": {
       "RahulAlam31\\LaravelAbuseIp\\": "src/"
-    }
+    },
+    "files": [
+      "src/helpers.php"
+    ]
   },
   "extra": {
       "laravel": {

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class AbuseIp
 {
-    protected $whitelistedIPs;
+    protected array $whitelistedIPs;
 
     public function __construct()
     {
@@ -17,16 +17,16 @@ class AbuseIp
 
     public function handle(Request $request, Closure $next)
     {
+        $ip = $request->ip();
 
         // Check if the IP is whitelisted
-        if (in_array($request->ip(), $this->whitelistedIPs)) {
+        if (in_array($ip, $this->whitelistedIPs)) {
             return $next($request); // Allow request if IP is whitelisted
         }
 
-        if (is_abused_ip($request->ip())) {
-
-            // Log::info('Blocking IP: ' . $request->ip());
-            return response('Your IP address has been blocked', 403);
+        if (is_abused_ip($ip)) {
+            // Log::info('Blocking IP: ' . $ip);
+            abort(403, 'Your IP address has been blocked');
         }
 
         return $next($request);

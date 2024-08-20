@@ -8,38 +8,36 @@ use RahulAlam31\Middleware\AbuseIp;
 
 class AbuseIPServiceProvider extends ServiceProvider
 {
+    /**
+     * The config source path.
+     *
+     * @var string
+     */
+    protected $config = __DIR__ . '/../config/abuseip.php';
+
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/abuseip.php' => config_path('abuseip.php'),
+            __DIR__ . '/../config/abuseip.php' => config_path('abuseip.php'),
         ], 'laravel-abuse-ip');
 
         $this->publishes([
-            __DIR__.'/../abuseip.json' => storage_path('framework/abuseip.json'),
+            __DIR__ . '/../abuseip.json' => config('abuseip.storage'),
         ], 'laravel-abuse-ip');
 
-        $this->mergeConfigFrom(
-            __DIR__.'/../config/abuseip.php', 'abuseip'
-        );
-
-        if($this->app->runningInConsole()){
+        if ($this->app->runningInConsole()) {
             $this->commands([
                 UpdateAbuseIps::class,
             ]);
         }
 
         $this->app['router']->aliasMiddleware('abuse_ip', AbuseIp::class);
-
-
     }
 
     public function register()
     {
 
-        // $this->mergeConfigFrom(
-        //     __DIR__.'/../config/abuseip.php', 'abuseip'
-        // );
+        $this->mergeConfigFrom($this->config, 'abuseip');
         // $this->app['router']->aliasMiddleware('block.abuse_ip', \RApp\Http\Middleware\AbuseIp::class);
     }
-
 }

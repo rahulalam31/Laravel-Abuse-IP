@@ -27,10 +27,15 @@ class UpdateAbuseIps extends Command
         }
 
         // convert ips to integers
-        $ips = array_map(fn(string $ip) => ip2long($ip), $ips);
+        if (config('abuseip.storage.compress')) {
+            $ips = array_map(fn(string $ip) => ip2long($ip), $ips);
+        }
 
         // save to abuseip.json
-        file_put_contents(config('abuseip.storage'), json_encode($ips));
+        file_put_contents(
+            config('abuseip.storage.path'),
+            json_encode($ips, config('abuseip.storage.compress') ? 0 : JSON_PRETTY_PRINT)
+        );
 
         try {
             Cache::forever('abuse_ips', $ips);

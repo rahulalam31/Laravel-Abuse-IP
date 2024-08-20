@@ -17,10 +17,13 @@ class UpdateAbuseIpTest extends TestCase
 
     public function testUpdateAbuseIpCommand()
     {
-        config(['abuseip.source' => [
-            'https://raw.githubusercontent.com/borestad/blocklist-abuseipdb/main/abuseipdb-s100-all.ipv4',
-            'https://example.com/blocklist-with-comments.txt',
-        ]]);
+        config([
+            'abuseip.source' => [
+                'https://raw.githubusercontent.com/borestad/blocklist-abuseipdb/main/abuseipdb-s100-all.ipv4',
+                'https://example.com/blocklist-with-comments.txt',
+            ],
+            'abuseip.storage.compress' => false,
+        ]);
 
         Http::fake([
             'https://raw.githubusercontent.com/borestad/blocklist-abuseipdb/master/ips.txt' => Http::response("192.168.0.1\n10.0.0.1\n"),
@@ -45,7 +48,7 @@ class UpdateAbuseIpTest extends TestCase
         $this->assertNotContains('# Some Blocklist', $cachedIps);
 
         // Check that ip.json file is updated
-        $ipjsonPath = config('abuseip.storage') ;
+        $ipjsonPath = config('abuseip.storage.path') ;
         $this->assertFileExists($ipjsonPath);
         $ipsfromFile = json_decode(file_get_contents($ipjsonPath), true);
         $this->assertNotEmpty($ipsfromFile);

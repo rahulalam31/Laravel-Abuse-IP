@@ -1,6 +1,6 @@
 <?php
 
-namespace RahulAlam31\Middleware;
+namespace RahulAlam31\LaravelAbuseIp\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;

@@ -22,7 +22,7 @@ class AbuseIPServiceProvider extends ServiceProvider
         ], 'laravel-abuse-ip');
 
         $this->publishes([
-            __DIR__ . '/../abuseip.json' => config('abuseip.storage'),
+            __DIR__ . '/../abuseip.json' => config('abuseip.storage.path'),
         ], 'laravel-abuse-ip');
 
         if ($this->app->runningInConsole()) {

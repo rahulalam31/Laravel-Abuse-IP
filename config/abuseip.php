@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | ABUSE_IP Source URL
+    | AbuseIP Source URL
     |--------------------------------------------------------------------------
     |
     | The source URLs yielding a list of abusive IPs. Change these to whatever
@@ -35,5 +35,21 @@ return [
         // Add more IPs here...
     ],
 
-    'storage' => storage_path('framework/cache/abuseip.json'),
+    /*
+    |--------------------------------------------------------------------------
+    | AbuseIP Storage
+    |--------------------------------------------------------------------------
+    |
+    | The path to store the abuseip.json file which is cached upon retrieval.
+    | By default using the compress option, where the IPs are stored as integers.
+    | If you prefer to keep the IPs as strings and store them in a human-readable
+    | format using JSON_PRETTY_PRINT, set the compress option to false.
+    |
+    */
+    'storage' => [
+        'path' => storage_path(
+            env('ABUSEIP_STORAGE_PATH', 'framework/cache/abuseip.json')
+        ),
+        'compress' => env('ABUSEIP_STORAGE_COMPRESS', true),
+    ],
 ];

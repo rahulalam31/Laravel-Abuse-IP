@@ -4,7 +4,7 @@ namespace RahulAlam31\LaravelAbuseIp;
 
 use Illuminate\Support\ServiceProvider;
 use RahulAlam31\LaravelAbuseIp\Console\Commands\UpdateAbuseIps;
-use App\Http\Middleware\AbuseIp;
+use RahulAlam31\Middleware\AbuseIp;
 
 class AbuseIPServiceProvider extends ServiceProvider
 {
@@ -15,31 +15,21 @@ class AbuseIPServiceProvider extends ServiceProvider
         ], 'laravel-abuse-ip');
 
         $this->publishes([
-            __DIR__.'/Middleware/AbuseIp.php' => app_path('Http/Middleware/AbuseIp.php'),
-        ], 'laravel-abuse-ip');
-
-        $this->publishes([
             __DIR__.'/../abuseip.json' => storage_path('framework/abuseip.json'),
         ], 'laravel-abuse-ip');
 
         $this->mergeConfigFrom(
             __DIR__.'/../config/abuseip.php', 'abuseip'
         );
-        
+
         if($this->app->runningInConsole()){
             $this->commands([
                 UpdateAbuseIps::class,
             ]);
         }
 
-        $this->app['router']->middleware('abuse_ip', AbuseIp::class);
+        $this->app['router']->aliasMiddleware('abuse_ip', AbuseIp::class);
 
-
-        // Register middleware
-    //     $router = $this->app->withMiddleware(function (Middleware $middleware) {
-    //         $middleware->append(EnsureTokenIsValid::class);
-    //    });
-    //     $router->middleware('abuse_ip', AbuseIp::class);
 
     }
 

@@ -31,6 +31,10 @@ Uses the AbuseIPDB blocklist from [borestad/blocklist-abuseipdb](https://github.
     php artisan abuseip:update
     ```
 
+3.1. Add the following to you ```.env``` file.
+     Add ```ABUSEIP_STORAGE_PATH``` to change your storage location, 
+     Add ```ABUSEIP_STORAGE_COMPRESS``` ```true/false``` to enable or disable ```ip2long()```
+
 
 4. (optional) It's highly advised to update the AbuseIp list daily as the spam ip address keeps changing daily, but you can schedule it as per your need regularly. You can either run the command yourself now and then or, if you make use of Laravel's scheduler, you can register the `abuseip:update` command: 
 

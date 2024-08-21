@@ -19,7 +19,7 @@ jobs:
 
       - name: Format IP List
         run: |
-          jq -R -s -c 'split("\n") | map(select(test("^[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+$"))) | .[]' abuseip.json > tmp.json && mv tmp.json abuseip.json
+          jq -R -s -c 'split("\n") | map(select(test("^[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+$")))' abuseip.json > tmp.json && mv tmp.json abuseip.json
 
 
       - name: Commit changes

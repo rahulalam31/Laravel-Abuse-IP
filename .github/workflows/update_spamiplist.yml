@@ -15,11 +15,11 @@ jobs:
 
       - name: Fetch IP List
         run: |
-          curl -o abuseip.json https://raw.githubusercontent.com/borestad/blocklist-abuseipdb/main/abuseipdb-s100-14d.ipv4
+          curl -o abuseip.txt https://raw.githubusercontent.com/borestad/blocklist-abuseipdb/main/abuseipdb-s100-14d.ipv4
 
       - name: Format IP List
         run: |
-          jq -R -s -c 'split("\n") | map(select(test("^[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+$")))' abuseip.json > tmp.json && mv tmp.json abuseip.json
+          grep -oP '^\d{1,3}(\.\d{1,3}){3}' abuseip.txt | jq -R -s -c 'split("\n") | map(select(. != ""))' > abuseip.json
 
 
       - name: Commit changes

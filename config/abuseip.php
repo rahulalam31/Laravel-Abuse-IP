@@ -45,7 +45,8 @@ return [
     |
     */
     'blacklist' => [
-        //'127.0.0.1',
+        '1.0.136.78', // Example of a blocked IP
+
     
     ],
 

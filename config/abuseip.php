@@ -37,6 +37,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | IP Blacklist
+    |--------------------------------------------------------------------------
+    |
+    | The IP addresses listed here will be blocked by the blocking middleware.
+    | You can add IPs as strings, and they will be checked before allowing access.
+    |
+    */
+    'blacklist' => [
+        //'127.0.0.1',
+    
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | AbuseIP Storage
     |--------------------------------------------------------------------------
     |

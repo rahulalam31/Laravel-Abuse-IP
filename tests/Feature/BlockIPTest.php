@@ -42,6 +42,15 @@ class BlockIPTest extends TestCase
         $response->assertSee('Your IP address has been blocked');
     }
 
+    public function testRequestFromConfigBlacklistIp()
+    {
+
+        // Simulate request from a blocked IP
+        $response = $this->withServerVariables(['REMOTE_ADDR' => '1.0.136.78'])->get('/test-route');
+        $response->assertStatus(403);
+        $response->assertSee('Your IP address has been blocked');
+    }
+
     public function testRequestFromAllowedIp()
     {
         // Add test IPs to the cache

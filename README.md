@@ -2,12 +2,13 @@
 
 # Laravel Abuse-IP
 
-##Keep you webiste safe from spammer.
+Keep you website safe from spammers.
 
 ![Packagist Downloads](https://img.shields.io/packagist/dt/rahulalam31/Laravel-Abuse-IP) ![Packagist Version](https://img.shields.io/packagist/v/rahulalam31/Laravel-Abuse-IP) [![License: MIT](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/license/mit) [![Update SPAM IP List](https://github.com/rahulalam31/Laravel-Abuse-IP/actions/workflows/update_spamiplist.yml/badge.svg)](https://github.com/rahulalam31/Laravel-Abuse-IP/actions/workflows/update_spamiplist.yml)
 
-Adds a Security to Laravel for checking whether the IP address is safe or marked as spam to keep you out of worry from spammers and fake data to your website.
-Uses the AbuseIPDB blocklist from [borestad/blocklist-abuseipdb](https://github.com/borestad/blocklist-abuseipdb) by default.
+Adds an additional layer of security to Laravel by determining whether an IP address has been reported as spam. This keeps you worry-free by shielding your website from fraudulent submissions and spammers.
+
+This package uses the AbuseIPDB blocklist from [borestad/blocklist-abuseipdb](https://github.com/borestad/blocklist-abuseipdb) by default.
 
 ### Installation
 
@@ -29,11 +30,11 @@ Uses the AbuseIPDB blocklist from [borestad/blocklist-abuseipdb](https://github.
     php artisan abuseip:update
     ```
 
-3.1. Add the following to you `.env` file.
-Add `ABUSEIP_STORAGE_PATH` to change your storage location,
-Add `ABUSEIP_STORAGE_COMPRESS` `true/false` to enable or disable `ip2long()`
+    - Add the following entries to your `.env` file:
+        - Add `ABUSEIP_STORAGE_PATH` to change the storage location.
+        - Add `ABUSEIP_STORAGE_COMPRESS` (`true`/`false`) to enable or disable `ip2long()`.
 
-4. (optional) It's highly advised to update the AbuseIp list daily as the spam ip address keeps changing daily, but you can schedule it as per your need regularly. You can either run the command yourself now and then or, if you make use of Laravel's scheduler, you can register the `abuseip:update` command:
+4. (Optional) It's highly advised to update the Abuse-IP list daily, as spam IP addresses change frequently. However, you can schedule updates regularly based on your needs. You may either run the command manually from time to time or, if you use Laravel's scheduler, register the abuseip:update command.
 
     In `routes/console.php`:
 
@@ -43,7 +44,7 @@ Add `ABUSEIP_STORAGE_COMPRESS` `true/false` to enable or disable `ip2long()`
     Schedule::command('abuseip:update')->daily();
     ```
 
-    Or if you use Laravel 10 or below, head over to the Console kernel:
+    Or if you use Laravel 10 or below, head over to `Http/Kernel.php`:
 
     ```php
      protected function schedule(Schedule $schedule)
@@ -54,7 +55,7 @@ Add `ABUSEIP_STORAGE_COMPRESS` `true/false` to enable or disable `ip2long()`
 
 ### Usage
 
-Use the `middleware::AbuseIp::class` where ever required like in form page or post urls.Or you can add the middleware to your code, For Laravel 10 and below add the middleware `Http/Kernel.php`, For Laravel 11 add to `bootstrap/app/php`
+Use the `middleware::AbuseIp::class` wherever required, such as on form pages or POST URLs. You can also add the middleware globally to your application. For Laravel 10 and below, register the middleware in `Http/Kernel.php`. For Laravel 11, add it to `bootstrap/app.php`.
 
 ```php
 //Laravel 10 and below
@@ -81,7 +82,7 @@ protected $middleware = [
 
 ```
 
-If you don't want to put it in your route middleware you can make a `aliasMiddleware()` and use the alias in your routes file to disable spam ip visits.
+If you don't want to add it directly to your route middleware, you can create an alias using `aliasMiddleware()` and then use that alias in your routes file to block spam IP visits.
 
 ```php
 //Laravel 10 and below
@@ -124,5 +125,5 @@ Route::middleware(AbuseIp::class)->get('/', function () {
 
 ### Custom fetches
 
-By default the package retrieves a new list by using `file_get_contents()`.
-If you have your own blacklisted Ip List add it to the `source` in `config/abuseip.php`
+By default, the package retrieves a new list using `file_get_contents()`.
+If you have your own blacklisted IP list, you can add it to the `source` option in `config/abuseip.php`.

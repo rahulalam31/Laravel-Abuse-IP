@@ -17,21 +17,21 @@
         }
     ],
     "require": {
-        "php": "^8.0",
+        "php": "^8.2",
         "ext-json": "*",
-        "illuminate/cache": "^8.0|^9.0|^10.0|^11.0|^12.0",
-        "illuminate/config": "^8.0|^9.0|^10.0|^11.0|^12.0",
-        "illuminate/contracts": "^8.0|^9.0|^10.0|^11.0|^12.0",
-        "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0",
-        "illuminate/console": "^8.0|^9.0|^10.0|^11.0|^12.0",
-        "illuminate/validation": "^8.0|^9.0|^10.0|^11.0|^12.0",
-        "guzzlehttp/guzzle": "^7.0|^7.9"
+        "illuminate/cache": "^11.0|^12.0|^13.0",
+        "illuminate/config": "^11.0|^12.0|^13.0",
+        "illuminate/contracts": "^11.0|^12.0|^13.0",
+        "illuminate/support": "^11.0|^12.0|^13.0",
+        "illuminate/console": "^11.0|^12.0|^13.0",
+        "illuminate/validation": "^11.0|^12.0|^13.0",
+        "guzzlehttp/guzzle": "^7.9"
     },
     "require-dev": {
-        "mockery/mockery": "1.7.x-dev",
-        "orchestra/testbench": "^8.18|^10.0",
-        "phpunit/phpunit": "^10.5|^11.5.3",
-        "larastan/larastan": "^2.9",
+        "mockery/mockery": "^1.7",
+        "orchestra/testbench": "^9.0|^10.0|^11.0",
+        "phpunit/phpunit": "^11.0|^12.0",
+        "larastan/larastan": "^2.9|^3.0",
         "laravel/pint": "^1.16"
     },
     "autoload": {

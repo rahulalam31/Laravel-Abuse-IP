@@ -2,7 +2,7 @@
 
 # Laravel Abuse-IP
 
-##Keep you webiste safe from spammer.
+## Keep you webiste safe from spammer.
 
 ![Packagist Downloads](https://img.shields.io/packagist/dt/rahulalam31/Laravel-Abuse-IP) ![Packagist Version](https://img.shields.io/packagist/v/rahulalam31/Laravel-Abuse-IP) [![License: MIT](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/license/mit) [![Update SPAM IP List](https://github.com/rahulalam31/Laravel-Abuse-IP/actions/workflows/update_spamiplist.yml/badge.svg)](https://github.com/rahulalam31/Laravel-Abuse-IP/actions/workflows/update_spamiplist.yml)
 

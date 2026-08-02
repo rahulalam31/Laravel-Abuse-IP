@@ -43,11 +43,25 @@ Add `ABUSEIP_STORAGE_COMPRESS` `true/false` to enable or disable `ip2long()`
     Schedule::command('abuseip:update')->daily();
     ```
 
+    Or if you use Laravel 10, head over to the Console kernel:
+
+    ```php
+    /*
+     * app/Console/Kernel.php
+    */
+
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->command('abuseip:update')->daily();
+    }
+    ```
+
 ### Usage
 
-Use the `middleware::AbuseIp::class` where ever required like in form page or post urls. You can add the middleware globally in `bootstrap/app.php`:
+Use the `middleware::AbuseIp::class` where ever required like in form page or post urls. You can add the middleware globally — for Laravel 11 and above in `bootstrap/app.php`, for Laravel 10 in `app/Http/Kernel.php`:
 
 ```php
+// Laravel 11 and above
 /*
  * bootstrap/app.php
 */
@@ -56,7 +70,19 @@ Use the `middleware::AbuseIp::class` where ever required like in form page or po
     })
 ```
 
-If you don't want to apply it globally, you can use the alias in your routes file to selectively block spam IP visits. The `abuse_ip` alias is registered automatically by the service provider.
+```php
+// Laravel 10
+/*
+ * app/Http/Kernel.php
+*/
+
+protected $middleware = [
+        \RahulAlam31\LaravelAbuseIp\Middleware\AbuseIp::class,
+        .....
+]
+```
+
+If you don't want to apply it globally, you can use the alias in your routes file to selectively block spam IP visits. The `abuse_ip` alias is registered automatically by the service provider, so no manual registration in `app/Http/Kernel.php` is needed on Laravel 10 either.
 
 ```php
 Route::get('/xyz', function () {

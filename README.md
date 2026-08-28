@@ -43,21 +43,35 @@ Add `ABUSEIP_STORAGE_COMPRESS` `true/false` to enable or disable `ip2long()`
     Schedule::command('abuseip:update')->daily();
     ```
 
-    Or if you use Laravel 10 or below, head over to the Console kernel:
+    Or if you use Laravel 10, head over to the Console kernel:
 
     ```php
-     protected function schedule(Schedule $schedule)
-     {
-         $schedule->command('abuseip:update')->daily();
-     }
+    /*
+     * app/Console/Kernel.php
+    */
+
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->command('abuseip:update')->daily();
+    }
     ```
 
 ### Usage
 
-Use the `middleware::AbuseIp::class` where ever required like in form page or post urls.Or you can add the middleware to your code, For Laravel 10 and below add the middleware `Http/Kernel.php`, For Laravel 11 add to `bootstrap/app/php`
+Use the `middleware::AbuseIp::class` where ever required like in form page or post urls. You can add the middleware globally — for Laravel 11 and above in `bootstrap/app.php`, for Laravel 10 in `app/Http/Kernel.php`:
 
 ```php
-//Laravel 10 and below
+// Laravel 11 and above
+/*
+ * bootstrap/app.php
+*/
+->withMiddleware(function (Middleware $middleware) {
+        $middleware->append(\RahulAlam31\LaravelAbuseIp\Middleware\AbuseIp::class);
+    })
+```
+
+```php
+// Laravel 10
 /*
  * app/Http/Kernel.php
 */
@@ -66,60 +80,22 @@ protected $middleware = [
         \RahulAlam31\LaravelAbuseIp\Middleware\AbuseIp::class,
         .....
 ]
-
-
 ```
 
-```php
-//Laravel 11
-/*
- * bootstrap/app.php
-*/
-->withMiddleware(function (Middleware $middleware) {
-        $middleware->append(\RahulAlam31\LaravelAbuseIp\Middleware\AbuseIp::class);
-    })
-
-```
-
-If you don't want to put it in your route middleware you can make a `aliasMiddleware()` and use the alias in your routes file to disable spam ip visits.
+If you don't want to apply it globally, you can use the alias in your routes file to selectively block spam IP visits. The `abuse_ip` alias is registered automatically by the service provider, so no manual registration in `app/Http/Kernel.php` is needed on Laravel 10 either.
 
 ```php
-//Laravel 10 and below
-/*
- * app/Http/Kernel.php
-*/
-
-protected $routeMiddleware = [
-        .....,
-        'abuseip' => \RahulAlam31\LaravelAbuseIp\Middleware\AbuseIp::class,
-
-]
-
 Route::get('/xyz', function () {
     //
-})->middleware('abuseip');
+})->middleware('abuse_ip');
 ```
 
 ```php
-//Laravel 11
-/*
- * bootstrap/app.php
-*/
-
-->withMiddleware(function (Middleware $middleware) {
-    //
-})
-->aliasMiddleware('abuse_ip', \RahulAlam31\LaravelAbuseIp\Middleware\AbuseIp::class)
-
-```
-
-```php
-// Or use in route file
+// Or use the middleware class directly in route file
 
 Route::middleware(AbuseIp::class)->get('/', function () {
             return view('welcome');
         });
-
 ```
 
 ### Custom fetches
